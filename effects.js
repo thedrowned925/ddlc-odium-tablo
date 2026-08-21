@@ -14,14 +14,30 @@
       const img = card.querySelector('.char-portrait');
       if(!name || !img || !portraits[name]) return;
       if(img.dataset.bound === '1') return;
+
       img.dataset.bound = '1';
-      img.src = portraits[name];
+      img.hidden = false;
+      img.referrerPolicy = 'no-referrer';
       img.alt = `${name} karakter görseli`;
-      img.addEventListener('load', () => card.classList.add('portrait-loaded'), {once:true});
-      img.addEventListener('error', () => {
-        img.hidden = true;
+
+      const loaded = () => {
+        img.hidden = false;
+        card.classList.remove('portrait-failed');
+        card.classList.add('portrait-loaded');
+      };
+      const failed = () => {
+        card.classList.remove('portrait-loaded');
         card.classList.add('portrait-failed');
-      }, {once:true});
+      };
+
+      img.addEventListener('load', loaded, {once:true});
+      img.addEventListener('error', failed, {once:true});
+      img.src = portraits[name];
+
+      // Önbellekten çok hızlı gelen görsellerde load olayı listener'dan önce
+      // tamamlanmış olabileceği için durumu ayrıca kontrol et.
+      if(img.complete && img.naturalWidth > 0) loaded();
+      else card.classList.add('portrait-loaded');
     });
   }
 
@@ -70,6 +86,7 @@
 
   function wireLineup(){
     document.querySelectorAll('.club-member img').forEach((img, index) => {
+      img.referrerPolicy = 'no-referrer';
       img.style.transitionDelay = `${350 + index * 110}ms`;
     });
   }
