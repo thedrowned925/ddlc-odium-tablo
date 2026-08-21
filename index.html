@@ -3,74 +3,87 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#fff5fa" />
-  <meta name="description" content="Doki Doki Literature Club Türkçe Dublaj projesi ilerleme takip sayfası." />
-  <title>DDLC Türkçe Dublaj — İlerleme Takibi</title>
+  <meta name="theme-color" content="#fff1f7" />
+  <meta name="description" content="Odium DDEK Proje İlerlemesi — Doki Doki Edebiyat Kulübü Türkçe dublaj kayıt ve mix takip sayfası." />
+  <title>Odium DDEK Proje İlerlemesi</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="enhancements.css" />
 </head>
 <body>
+  <div class="opening-wash" aria-hidden="true">
+    <div class="opening-wash__heart">♡</div>
+    <div class="opening-wash__line"></div>
+  </div>
   <div class="paper-noise" aria-hidden="true"></div>
   <div class="floaters" aria-hidden="true"></div>
+  <div class="corner-doodles" aria-hidden="true"><span>✦</span><span>♡</span><span>✎</span><span>✧</span></div>
 
   <header class="site-header">
     <a href="#top" class="brand" aria-label="Başa dön">
       <span class="brand-heart">♡</span>
-      <span>ODIUM <b>×</b> DDLC</span>
+      <span>ODIUM <b>DDEK</b></span>
     </a>
     <nav class="nav" aria-label="Sayfa bölümleri">
       <a href="#characters">Karakterler</a>
-      <a href="#tracker">Takip Tablosu</a>
-      <button class="soundless-btn" id="chaosBtn" type="button" title="Bir şey olacak mı?">?</button>
+      <a href="#tracker">İlerleme</a>
+      <button class="soundless-btn" id="chaosBtn" type="button" title="Doki?">?</button>
     </nav>
   </header>
 
   <main id="top">
     <section class="hero section-shell">
       <div class="hero-copy reveal">
-        <p class="eyebrow"><span class="live-dot"></span> DOKI DOKI TÜRKÇE DUBLAJ / CANLI İLERLEME</p>
+        <p class="eyebrow"><span class="live-dot"></span> ODIUM DDEK • PROJE İLERLEMESİ</p>
         <h1>
-          Bir kulüp toplantısından<br>
-          <span class="scribble-underline">çok daha fazlası.</span>
+          Odium DDEK<br>
+          <span class="scribble-underline">Proje İlerlemesi</span>
         </h1>
-        <p class="hero-lead">Kayıt, mix ve eksik repliklerin tek yerde tutulduğu proje günlüğü. Sayılar kaynak tablodan yaklaşık olarak hesaplanır.</p>
+        <p class="hero-lead">Doki Doki Edebiyat Kulübü Türkçe dublaj projesinin kayıt, mix ve eksik replik durumu.</p>
         <div class="hero-actions">
-          <a class="paper-button primary" href="#tracker">Tabloyu aç <span>↓</span></a>
-          <a class="paper-button" href="#characters">Karakter ilerlemesi</a>
+          <a class="paper-button primary" href="#tracker">İlerlemeyi aç <span>↓</span></a>
+          <a class="paper-button" href="#characters">Karakterlere bak</a>
         </div>
-        <div class="tiny-note rotate-left">“Sadece Monika” değil.<br>Bu kez herkesin durumu burada.</div>
       </div>
 
-      <div class="hero-board reveal delay-1" aria-label="Genel ilerleme özeti">
-        <div class="tape tape-a"></div>
-        <div class="tape tape-b"></div>
-        <div class="board-title">PROJE DURUMU</div>
-        <div class="big-progress" id="recordingRing" style="--value:0">
-          <div class="big-progress-inner">
-            <strong id="recordingPercent">0%</strong>
-            <span>kayıt alındı</span>
+      <div class="hero-visual reveal delay-1" aria-label="Genel ilerleme özeti">
+        <div class="club-lineup" aria-hidden="true">
+          <figure class="club-member club-member--sayori"><img src="https://ddlc.moe/images/sticker_s.png" alt="" loading="eager"><i></i></figure>
+          <figure class="club-member club-member--yuri"><img src="https://ddlc.moe/images/sticker_y.png" alt="" loading="eager"><i></i></figure>
+          <figure class="club-member club-member--monika"><img src="https://ddlc.moe/images/sticker_m.png" alt="" loading="eager"><i></i></figure>
+          <figure class="club-member club-member--natsuki"><img src="https://ddlc.moe/images/sticker_n.png" alt="" loading="eager"><i></i></figure>
+        </div>
+        <div class="hero-board">
+          <div class="tape tape-a"></div>
+          <div class="tape tape-b"></div>
+          <div class="board-title">GENEL İLERLEME</div>
+          <div class="big-progress" id="recordingRing" style="--value:0">
+            <div class="big-progress-inner">
+              <strong id="recordingPercent">0%</strong>
+              <span>kayıt alındı</span>
+            </div>
           </div>
+          <div class="board-stats">
+            <div><span class="marker pink"></span><b id="totalLines">—</b><small>toplam replik</small></div>
+            <div><span class="marker blue"></span><b id="mixQueue">—</b><small>mix bekliyor</small></div>
+            <div><span class="marker green"></span><b id="mixedLines">—</b><small>tamamlandı</small></div>
+          </div>
+          <p class="board-footer">Son veri: <span id="updatedAt">—</span></p>
         </div>
-        <div class="board-stats">
-          <div><span class="marker pink"></span><b id="totalLines">—</b><small>toplam replik</small></div>
-          <div><span class="marker blue"></span><b id="mixQueue">—</b><small>mix bekliyor</small></div>
-          <div><span class="marker green"></span><b id="mixedLines">—</b><small>tamamlandı</small></div>
-        </div>
-        <p class="board-footer">Son veri: <span id="updatedAt">—</span></p>
       </div>
     </section>
 
     <section class="ticker-wrap" aria-hidden="true">
       <div class="ticker">
-        <span>WRITE • RECORD • MIX • REPEAT •</span><span>WRITE • RECORD • MIX • REPEAT •</span><span>WRITE • RECORD • MIX • REPEAT •</span>
+        <span>ODIUM • DDEK • KAYIT • MIX • TAMAMLANDI •</span><span>ODIUM • DDEK • KAYIT • MIX • TAMAMLANDI •</span><span>ODIUM • DDEK • KAYIT • MIX • TAMAMLANDI •</span>
       </div>
     </section>
 
     <section class="overview section-shell reveal">
       <div class="section-heading">
-        <div><p class="eyebrow">KULÜP PANOSU</p><h2>Bugün neredeyiz?</h2></div>
+        <div><p class="eyebrow">GENEL DURUM</p><h2>Proje ilerlemesi</h2></div>
         <p class="heading-note">Kayıt alınmış = mix bekleyen + tamamlanmış replikler.</p>
       </div>
       <div class="metric-grid">
@@ -95,8 +108,8 @@
 
     <section id="characters" class="characters section-shell">
       <div class="section-heading reveal">
-        <div><p class="eyebrow">KARAKTER DOSYALARI</p><h2>Dört ses, dört ayrı yol.</h2></div>
-        <p class="heading-note">Kartların üzerine gel; telefonda dokun.</p>
+        <div><p class="eyebrow">KARAKTERLER</p><h2>Karakter ilerlemeleri</h2></div>
+        <p class="heading-note">Kayıt ve mix durumu.</p>
       </div>
       <div class="character-grid" id="characterGrid"></div>
     </section>
@@ -104,18 +117,14 @@
     <section class="chapter-strip section-shell reveal">
       <div class="chapter-strip-text">
         <span class="chapter-number">236</span>
-        <div><small>takip edilen script satırı</small><strong>Her küçük sahne, büyük resmin bir parçası.</strong></div>
+        <div><small>takip edilen script satırı</small><strong>Odium DDEK kayıt ve mix takibi</strong></div>
       </div>
-      <div class="mini-poem">
-        <span>ses kayda girer,</span>
-        <span>dalga formu susmaz,</span>
-        <span>mix sırasını bekler.</span>
-      </div>
+      <div class="chapter-badges" aria-hidden="true"><span>REC</span><span>MIX</span><span>✓</span></div>
     </section>
 
     <section id="tracker" class="tracker section-shell">
       <div class="section-heading reveal">
-        <div><p class="eyebrow">SCRIPT TAKİP DEFTERİ</p><h2>Aradığın satırı bul.</h2></div>
+        <div><p class="eyebrow">SCRIPT TAKİBİ</p><h2>Detaylı ilerleme</h2></div>
         <p class="heading-note" id="resultCount">—</p>
       </div>
 
@@ -162,29 +171,27 @@
         <div id="trackerRows" class="tracker-rows"></div>
         <div id="emptyState" class="empty-state" hidden>
           <div class="broken-heart">♡</div>
-          <strong>Bu filtrelerde bir şey yok.</strong>
-          <span>Belki şiir kelimelerini biraz değiştir?</span>
+          <strong>Sonuç bulunamadı.</strong>
+          <span>Filtreleri değiştirip tekrar deneyebilirsin.</span>
         </div>
-      </div>
-    </section>
-
-    <section class="final-note section-shell reveal">
-      <div class="final-note-card">
-        <span class="pin">●</span>
-        <p>“Mükemmel olmak zorunda değil. Bitmiş olmak, ilerlemenin kendisi.”</p>
-        <small>— kulüp panosuna bırakılmış isimsiz not</small>
       </div>
     </section>
   </main>
 
   <footer>
-    <span>DDLC Türkçe Dublaj Takip Sayfası</span>
+    <span>Odium DDEK Proje İlerlemesi</span>
     <span>Odium Studios • <span id="footerYear"></span></span>
   </footer>
 
   <template id="characterTemplate">
     <article class="character-card reveal">
       <div class="char-tape"></div>
+      <div class="char-portrait-frame">
+        <span class="char-halo" aria-hidden="true"></span>
+        <img class="char-portrait" src="" alt="" loading="lazy" />
+        <span class="char-spark char-spark-a" aria-hidden="true">✦</span>
+        <span class="char-spark char-spark-b" aria-hidden="true">♡</span>
+      </div>
       <div class="char-top">
         <span class="char-monogram"></span>
         <div><small class="char-label">KARAKTER</small><h3 class="char-name"></h3></div>
@@ -207,5 +214,6 @@
 
   <script src="data.js"></script>
   <script src="app.js" defer></script>
+  <script src="effects.js" defer></script>
 </body>
 </html>
