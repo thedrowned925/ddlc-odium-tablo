@@ -5,14 +5,16 @@
     Sayori: 'https://ddlc.moe/images/sticker_s.png',
     Yuri: 'https://ddlc.moe/images/sticker_y.png'
   };
-
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const wiredCards = new WeakSet();
 
   function attachPortraits(){
     document.querySelectorAll('.character-card').forEach(card => {
       const name = card.querySelector('.char-name')?.textContent?.trim();
       const img = card.querySelector('.char-portrait');
       if(!name || !img || !portraits[name]) return;
+      if(img.dataset.bound === '1') return;
+      img.dataset.bound = '1';
       img.src = portraits[name];
       img.alt = `${name} karakter görseli`;
       img.addEventListener('load', () => card.classList.add('portrait-loaded'), {once:true});
@@ -52,6 +54,8 @@
 
   function wireCards(){
     document.querySelectorAll('.character-card').forEach(card => {
+      if(wiredCards.has(card)) return;
+      wiredCards.add(card);
       let lastBurst = 0;
       const maybeBurst = (event) => {
         const now = performance.now();
@@ -70,9 +74,14 @@
     });
   }
 
-  attachPortraits();
-  wireCards();
-  wireLineup();
+  function refreshDynamicEffects(){
+    attachPortraits();
+    wireCards();
+    wireLineup();
+  }
+
+  document.addEventListener('ddlc:data-ready', refreshDynamicEffects);
+  refreshDynamicEffects();
 
   if(reducedMotion){
     awaken();
