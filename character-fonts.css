@@ -1,0 +1,34 @@
+/* DDLC character handwriting fonts — typography only */
+@import url("https://db.onlinewebfonts.com/c/12c444d479fe5942636505e6f297a2f1?family=Journal");
+@import url("https://db.onlinewebfonts.com/c/7255449afbe273b0e08027c63bb216ef?family=Ammys+Handwriting");
+@import url("https://db.onlinewebfonts.com/c/82530371a042cae32b886f738a6d8c44?family=Hashtag");
+@import url("https://db.onlinewebfonts.com/c/79057d5fd8527bf54c3470f0428ca938?family=JP+Hand+Slanted");
+
+/* renderCharacters() sırası: Monika, Natsuki, Sayori, Yuri */
+.character-card:nth-child(1){--character-hand:"Journal","Patrick Hand",cursive}
+.character-card:nth-child(2){--character-hand:"Ammys Handwriting","Patrick Hand",cursive}
+.character-card:nth-child(3){--character-hand:"Hashtag","Patrick Hand",cursive}
+.character-card:nth-child(4){--character-hand:"JP Hand Slanted","Patrick Hand",cursive}
+
+.character-card :is(
+  .char-name,
+  .char-note,
+  .char-stamp,
+  .char-monogram,
+  .char-label,
+  .char-percent-row,
+  .char-record-percent,
+  .char-mix-percent,
+  .char-numbers,
+  .char-numbers b,
+  .char-numbers span
+){
+  font-family:var(--character-hand,"Patrick Hand",cursive)!important;
+}
+
+.character-card .char-name{font-weight:400;letter-spacing:.01em}
+.character-card .char-note{font-size:1.08rem;line-height:1.3}
+.character-card .char-percent-row{font-size:.82rem}
+.character-card .char-record-percent,
+.character-card .char-mix-percent{font-size:1.25rem;font-weight:400}
+.character-card .char-numbers b{font-weight:400}
